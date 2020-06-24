@@ -36,7 +36,6 @@ const LineGrafic = props => {
                     tickFormat={v => {
                         const date = v.split('-');
                         const day = date[2].split('T');
-                        console.log(day);
                         if(day[0] === '15'){
                         return props.months[date[1] - 1];
                         }else{

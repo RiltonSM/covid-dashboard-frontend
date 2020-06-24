@@ -35,28 +35,20 @@ const Dashboard = () => {
     const [ loading, setLoading ] = useState(true);
     
     useEffect(() => {
-        console.log(window.screen.width)
         let initial = new Date;
         const day = initial.getDate().toString();
         const month = (initial.getMonth() + 1).toString();
         const year = initial.getFullYear().toString();
         
         const date = `${year}-${month.length === 1 ? `0${month}`: `${month}`}-${day.length === 1 ? `0${day}`: `${day}`}`;
-        console.log(date);
 
         api.get(`brazil/date?date=${date}&${typeLocal}=${local}`).then(response => {
-            console.log(response.data);
             setData(response.data);
             setLoading(false);
         });
     }, [local]);
 
-    useEffect(()=> {
-        console.log(toggle, local);
-    }, [toggle, local])
-
     const handleToggleButton = (event, value) => {
-        console.log(value);
         if(value !== null){
             setToggle(value);
         }
